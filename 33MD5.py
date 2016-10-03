@@ -1,4 +1,4 @@
-$ coding:utf8
+# coding:utf8
 myMd5 = ""
 for i in range(len(myMd5)):
     for j in range(0, 33):
