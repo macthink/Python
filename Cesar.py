@@ -10,7 +10,7 @@ def cesar(ciphertext):
 	for i in range(26):
 		for ch in ciphertext:
 			if (ord(ch) >= ord('A')) and (ord(ch) <= ord('Z')):
-				newch = chr(((ord(ch) - ord('A') + i) % 26) + ord('Z'))
+				newch = chr(((ord(ch) - ord('A') + i) % 26) + ord('A'))
 			elif (ord(ch) >= ord('a')) and (ord(ch) <= ord('z')):
 				newch = chr(((ord(ch) - ord('a') + i) % 26) + ord('a'))
 			else:
