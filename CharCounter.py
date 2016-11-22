@@ -1,15 +1,10 @@
-# coding:utf8
-
-def charCounter(words, char):
-	counter = 0
-	for ch in words:
-		if char == ch:
-			counter += 1
-		else:
-			pass
-	return counter
+#!/usr/bin/env python 
+# -*- coding: utf-8 -*- 
 
 def getSetOfWords(words):
+	'''
+	统计出文本中所有有的字符
+	'''
 	myset = set()
 	for ch in words:
 		if ch in myset:
@@ -18,11 +13,15 @@ def getSetOfWords(words):
 			myset.add(ch)
 	return myset
 
-def printResult(words):
+def getResult(words):
+	'''
+	返回统计结果(字典)
+	'''
+	result = {}
 	myset = getSetOfWords(words)
 	for ch in myset:
-		print ch + " " + str(charCounter(words, ch))
+		result[ch]=words.count(ch)
+	return result
 
-words = "I never said I was the best in all the land, but I will never admit that I was the second."
-print words
-printResult(words)
+words = input("Please input the words : ")
+print getResult(words)
