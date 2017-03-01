@@ -5,39 +5,48 @@ import requests
 
 # config-start
 username = "" # 学号
-usertype = "sam" # 用户类型 (职工唯一号 : "hitid") (其他账户 : "")
 password = "" # 密码
-url = "http://192.168.52.11/cgi-bin/srun_portal"
+url = "http://www.msftconnecttest.com/srun_portal_pc.php?ac_id=1&"
 # config-end
 
 session = requests.Session()
 postData = {
         "action":"login",
-        "username":username + "@" + usertype,
-        "password":password,
         "ac_id":"1",
-        "type":"1",
-        "wbaredirect":"",
-        "mac":"",
         "user_ip":"",
-        "vrf_id":"0"
+        "nas_ip":"",
+        "user_mac":"",
+        "url":"",
+        "username":username,
+        "password":password,
+        "save_me":"1"
         }
 response = session.post(url, data=postData)
 print response.status_code
-print response.text
+print response.text.encode("UTF-8")
 
-# 参考HTTP头
-# POST  HTTP/1.1
-# Host: 192.168.52.11
-# Content-Length: 105
-# Origin: http://192.168.52.11/cgi-bin/srun_portal
-# User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36
+# 参考 HTTP 头
+# POST /srun_portal_pc.php?ac_id=1& HTTP/1.1
+# Host: www.msftconnecttest.com
+# Connection: keep-alive
+# Cache-Control: max-age=0
+# Origin: http://www.msftconnecttest.com
+# Upgrade-Insecure-Requests: 1
+# User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36
 # Content-Type: application/x-www-form-urlencoded
-# Accept: */*
-# Referer: http://192.168.52.11/srun_portal_pc.php?url=&ac_id=1
+# Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+# Referer: http://www.msftconnecttest.com/srun_portal_pc.php?ac_id=1&
 # Accept-Encoding: gzip, deflate
 # Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
-# Cookie: srun_login=11537102
-# Connection: close
-# 
-# action=login&username=*****%40sam&password=&ac_id=1&type=1&wbaredirect=&mac=&user_ip=&vrf_id=0
+
+# 参考 POST 数据
+# ac_id:1
+# action:login
+# ac_id:1
+# user_ip:
+# nas_ip:
+# user_mac:
+# url:
+# username:
+# password:
+# save_me:1
